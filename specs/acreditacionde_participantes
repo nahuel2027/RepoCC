@@ -1,0 +1,28 @@
+# Spec: Acreditación de Participantes
+
+## 1. Objetivo y Contexto
+Proveer al personal del evento una herramienta para registrar la asistencia física o virtual de los inscriptos, habilitando la posterior emisión de certificados.
+
+## 2. Historias de Usuario y Criterios de Aceptación
+* **HU:** Como personal del evento, quiero marcar la asistencia de un participante para validar su presencia.
+    * **CA1:** El sistema debe permitir buscar al participante por nombre o documento.
+    * **CA2:** El sistema debe mostrar visualmente si el participante ya fue acreditado previamente.
+
+## 3. Requisitos Funcionales y Reglas de Negocio
+* **RF1:** Buscador de participantes inscritos por evento.
+* **RF2:** Acción de "Acreditar" con un solo clic.
+* **RN1:** Solo los usuarios con rol de "Organizador" pueden acceder a este módulo.
+* **RN2:** Solo se pueden acreditar usuarios cuyo estado de inscripción sea "Confirmado".
+
+## 4. Restricciones técnicas específicas de este módulo
+* La vista debe ser adaptable a móviles (responsive) para facilitar el uso en tablets o celulares durante el ingreso al evento.
+
+## 5. Modelo de datos de este módulo
+* **Campos en la tabla `inscripciones`**: `asistio` (Booleano, por defecto Falso), `fecha_acreditacion` (Fecha y Hora).
+
+## 6. Plan de Tareas
+* [ ] Crear vista de listado de inscriptos con barra de búsqueda.
+* [ ] Implementar el proceso para actualizar el campo "asistio" en la base de datos.
+
+## 7. Estrategia de Verificación
+* **Prueba:** Realizar una acreditación y verificar en la base de datos que el campo `asistio` cambie a Verdadero y `fecha_acreditacion` guarde el momento exacto de la acción.
