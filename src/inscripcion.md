@@ -30,5 +30,5 @@ def registrar_inscripcion(usuario_id, evento_id):
     evento["inscriptos"] += 1
     return f"¡Éxito! Usuario {usuario_id} inscripto al evento {evento_id}."
 
-# Prueba de ejecución
+# Prueba de ejecución#
 print(registrar_inscripcion(usuario_id="AguileraNahuel", evento_id=1))
