@@ -29,3 +29,4 @@ Automatizar la emisión de comprobantes de asistencia y participación en format
 * **Prueba:** Acceder con un usuario que NO tiene marcada la asistencia e intentar forzar la URL de descarga del certificado. El sistema debe denegar el acceso.
 ### Avance de Certificados
 - Definición de formato PDF y campos automáticos (Nombre, DNI, Evento).
+- Lógica de generación automática validada.
