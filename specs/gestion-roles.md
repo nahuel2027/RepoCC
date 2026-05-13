@@ -28,3 +28,6 @@ Permitir que los organizadores del evento puedan administrar los privilegios de 
 
 ## 7. Estrategia de Verificación
 * **Prueba:** Intentar cambiar el rol de un usuario usando una cuenta de "Participante" y verificar que el sistema bloquee la acción con un error 403 (Prohibido).
+
+### Avance de Roles
+- Se definen permisos para Administrador, Organizador y Disertante.
