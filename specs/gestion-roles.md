@@ -31,3 +31,4 @@ Permitir que los organizadores del evento puedan administrar los privilegios de 
 
 ### Avance de Roles
 - Se definen permisos para Administrador, Organizador y Disertante.
+- Validación de roles completada.
