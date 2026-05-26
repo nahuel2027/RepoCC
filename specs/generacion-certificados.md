@@ -30,3 +30,15 @@ Automatizar la emisión de comprobantes de asistencia y participación en format
 ### Avance de Certificados
 - Definición de formato PDF y campos automáticos (Nombre, DNI, Evento).
 - Lógica de generación automática validada.
+
+### Controles de Seguridad Aplicados (Framework OWASP Top 10)
+
+Para mitigar el riesgo de vulnerabilidades en la emisión de certificados (Riesgo R3), se establecen los siguientes controles obligatorios durante el desarrollo:
+
+1. **Prevención contra Fallas de Control de Acceso (OWASP A01:2021 - Broken Access Control):**
+   - El sistema debe verificar en el backend (servidor) que el usuario que solicita la descarga tenga el rol correspondiente y registre asistencia confirmada al evento.
+   - Prohibir la descarga de certificados mediante la simple manipulación de URLs (ej. cambiar `id=12` por `id=13` en la barra de direcciones).
+
+2. **Prevención contra Inyección (OWASP A03:2021 - Injection):**
+   - Sanitización estricta de todos los parámetros de entrada (Nombre, DNI, Título del Evento) que se inserten en la plantilla del PDF.
+   - Uso de librerías seguras para la generación del documento que bloqueen la ejecución de código incrustado o scripts maliciosos.
