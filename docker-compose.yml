@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  # Servicio de la Aplicación Web (Flask)
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
+      - DATABASE_URL=postgresql://user_eventos:pass_eventos@db:5432/bd_eventos
+    depends_on:
+      - db
+
+  # Servicio de Persistencia (Base de Datos PostgreSQL)
+  db:
+    image: postgres:16-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=user_eventos
+      - POSTGRES_PASSWORD=pass_eventos
+      - POSTGRES_DB=bd_eventos
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+volumes:
+  postgres_data:
