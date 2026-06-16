@@ -32,3 +32,15 @@ Permitir que los organizadores del evento puedan administrar los privilegios de 
 ### Avance de Roles
 - Se definen permisos para Administrador, Organizador y Disertante.
 - Validación de roles completada.
+
+### Controles de Seguridad Aplicados (Framework OWASP Top 10)
+
+Para mitigar el riesgo de escalada de privilegios y accesos no autorizados en la administración de usuarios, se establecen los siguientes controles obligatorios durante el desarrollo:
+
+1. **Prevención contra Fallas de Control de Acceso (OWASP A01:2021 - Broken Access Control):**
+   - Cada petición dirigida al endpoint de actualización de roles (`POST` o `PUT /api/roles`) debe validar en el servidor la sesión activa y asegurar que el usuario ejecutor posee de manera efectiva el rol de 'ORGANIZADOR'.
+   - No se debe confiar en las restricciones visuales implementadas en el frontend (como ocultar un botón); el backend debe rechazar explícitamente cualquier solicitud no autorizada.
+   - Protección contra la manipulación directa de parámetros (Insecure Direct Object References): el sistema debe verificar que el organizador pertenezca realmente al evento donde intenta alterar los privilegios de un usuario.
+
+2. **Falsificación de Solicitudes del Lado del Servidor / Lado del Cliente (OWASP A10:2021 - SSRF / CSRF):**
+   - Para las solicitudes que ejecutan cambios de estado críticos, como la modificación de roles, se debe incorporar la validación de tokens anti-CSRF en cada formulario o cabecera HTTP. Esto imposibilita que un tercero malicioso induzca a un organizador autenticado a ejecutar una asignación de roles involuntaria.
